@@ -5,7 +5,7 @@ const app = express();
 // Importando arquivo de rotas
 const tasks = require('./routes/tasks');
 
-// Executando função de conexão ao MongoDB
+// Importando função de conexão ao MongoDB
 const connectDB = require('./db/connect');
 
 // Habilitando o uso das variáveis ambiente
@@ -15,15 +15,12 @@ require('dotenv').config();
 app.use(express.json());
 app.use('/api/v1/tasks', tasks);
 
-
-// Rodando o servidor
-const port = process.env.PORT;
-
+// Conectando ao MongoDB e iniciando o servidor
 const start = async() => {
   try {
     await connectDB(process.env.MONGO_URI);
     console.log('- MongoDB connected');
-    app.listen(port, console.log(`- Server is listening on port ${port}`));
+    app.listen(process.env.PORT, console.log(`- Server is listening on port ${process.env.PORT}`));
   } catch (error) {
     console.log(error);
   }
