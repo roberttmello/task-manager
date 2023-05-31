@@ -1,16 +1,20 @@
+const Task = require('../models/Task');
+
 // Lista todas as tarefas
-const getAllTasks = (req, res) => {
-  res.send('All tasks!');
+const getAllTasks = async (req, res) => {
+  const tasks = await Task.find();
+  res.status(201).json({tasks});
 };
 
 // Cadastra uma tarefa
-const createTask = (req, res) => {
-  res.send('Create task!');
+const createTask = async (req, res) => {
+  const task = await Task.create(req.body);
+  res.status(201).json({ task });
 };
 
 // Lista uma tarefa específica
-const getSingleTask = (req, res) => {
-  res.send('Get single task!');
+const getSingleTask = async (req, res) => {
+  res.json('Single task');
 };
 
 // Edita uma tarefa
