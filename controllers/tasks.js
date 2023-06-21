@@ -8,8 +8,13 @@ const getAllTasks = async (req, res) => {
 
 // Cadastra uma tarefa
 const createTask = async (req, res) => {
-  const task = await Task.create(req.body);
-  res.status(201).json({ task });
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).json({ task });
+  } catch (error) {
+    res.status(500).json({msg: error});
+  }
+  
 };
 
 // Lista uma tarefa específica
