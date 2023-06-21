@@ -2,8 +2,12 @@ const Task = require('../models/Task');
 
 // Lista todas as tarefas
 const getAllTasks = async (req, res) => {
-  const tasks = await Task.find();
-  res.status(201).json({tasks});
+  try {
+    const tasks = await Task.find({});
+    res.status(200).json({ tasks });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 // Cadastra uma tarefa
@@ -19,7 +23,16 @@ const createTask = async (req, res) => {
 
 // Lista uma tarefa específica
 const getSingleTask = async (req, res) => {
-  res.json('Single task');
+  try {
+    const {id:taskID} = req.params
+    const task = await Task.findOne({_id:taskID});
+    if (!task) {
+      return res.status(404).json({msg: `No task with id: ${taskID}`});
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 // Edita uma tarefa
