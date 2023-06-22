@@ -16,18 +16,31 @@ const createTask = async (req, res) => {
     const task = await Task.create(req.body);
     res.status(201).json({ task });
   } catch (error) {
-    res.status(500).json({msg: error});
+    res.status(500).json({ msg: error });
   }
-  
 };
 
 // Lista uma tarefa específica
 const getSingleTask = async (req, res) => {
   try {
-    const {id:taskID} = req.params
-    const task = await Task.findOne({_id:taskID});
+    const { id: taskID } = req.params;
+    const task = await Task.findOne({ _id: taskID });
     if (!task) {
-      return res.status(404).json({msg: `No task with id: ${taskID}`});
+      return res.status(404).json({ msg: `No task with id: ${taskID}` });
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+};
+
+// Deleta uma tarefa
+const deleteTask = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const task = await Task.findOneAndDelete({ _id: taskID });
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id: ${taskID}` });
     }
     res.status(200).json({ task });
   } catch (error) {
@@ -36,13 +49,20 @@ const getSingleTask = async (req, res) => {
 };
 
 // Edita uma tarefa
-const editTask = (req, res) => {
-  res.send('Edit task!');
-};
-
-// Deleta uma tarefa
-const deleteTask = (req, res) => {
-  res.send('Delete task!');
+const editTask = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id: ${taskID}` });
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 module.exports = {
