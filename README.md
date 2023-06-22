@@ -1,13 +1,11 @@
 
 # Task Manager rest API
 
-Rest API desenvolvida com Nodejs, Express and MongoDB. Foi implementado as operações padrões de CRUD usando a arquitetura MVC.  
-
+Rest API desenvolvida com Nodejs, Express and MongoDB. Foi implementado as operações padrões de CRUD usando a arquitetura MVC  
 
 ## Stack utilizada
 
 **Back-end:** Node, Express, MongoDB
-
 
 ## Documentação da API
 
@@ -16,19 +14,16 @@ Rest API desenvolvida com Nodejs, Express and MongoDB. Foi implementado as opera
 ```http
   GET /api/v1/tasks
 ```
-
 #### Retorna uma tarefa
 
 ```http
   GET /api/v1/tasks/:id
 ```
-
 #### Cadastra uma tarefa
 
 ```http
   POST /api/v1/tasks
 ```
-
 #### Edita uma tarefa
 
 ```http
@@ -40,8 +35,6 @@ Rest API desenvolvida com Nodejs, Express and MongoDB. Foi implementado as opera
 ```http
   DELETE /api/v1/tasks/:id
 ```
-
-
 
 ## Rodando localmente
 
@@ -69,7 +62,6 @@ Inicie o servidor
   npm run start
 ```
 
-
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
@@ -78,9 +70,13 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 `MONGO_URI`
 
-
 ## Autor
 
 - [@roberttmello](https://www.github.com/roberttmello)
 
+## 🚀 Sobre mim
+Eu sou um desenvolvedor backend que ama a stack javascript
 
+## Licença
+
+[MIT](https://choosealicense.com/licenses/mit/)
