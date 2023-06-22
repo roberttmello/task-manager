@@ -11,10 +11,15 @@ const connectDB = require('./db/connect');
 // Habilitando o uso das variáveis ambiente
 require('dotenv').config();
 
+// Importando função responsável pelas rotas não encontradas
+const notFound = require('./middleware/not-found');
+
 // Executando os Middlewares
 app.use(express.json());
-
 app.use('/api/v1/tasks', tasks);
+
+// 404
+app.use(notFound);
 
 // Conectando ao MongoDB e iniciando o servidor
 const start = async () => {
