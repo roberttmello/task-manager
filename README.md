@@ -1,7 +1,7 @@
 
 # Task Manager rest API
 
-Rest API desenvolvida com Nodejs, Express and MongoDB. Foi implementado as operações padrões de CRUD usando a arquitetura MVC  
+Rest API desenvolvida com Nodejs, Express e MongoDB. Foi implementado as operações padrões de CRUD usando a arquitetura MVC  
 
 ## Stack utilizada
 
